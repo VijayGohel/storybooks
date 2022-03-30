@@ -4,7 +4,9 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const connectDb = require('./config/connectDb')
 const passport = require("passport")
+const mongoose = require("mongoose")
 const session  = require("express-session")
+const MongoStore = require("connect-mongo")
 
 dotenv.config({path: './config/.env'});
 
@@ -29,7 +31,8 @@ app.set("view engine", "ejs" );
 app.use(session({
     secret:process.env.SESSION_SECRET,
     resave:false,
-    saveUninitialized:false
+    saveUninitialized:false,
+    store: MongoStore.create({mongoUrl: process.env.MONGO_URI})
 }))
 
 app.use(passport.initialize());
