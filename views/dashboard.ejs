@@ -1,5 +1,35 @@
 <%- include('header'); -%>
 
-<h1>Dashboard</h1>
+<%- include('add-button'); -%>
 
+<div class="container">
+
+<h6>Dashboard</h6>
+<h3>Welcome <%=userName%></h3>
+<p>Here are your stories</p>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if(stories) {
+            stories.forEach((story)=>{%>
+      <tr>
+        <th scope="row"><%=story.title%></th>
+        <td><%=story.createdAt%></td>
+        <td><%=story.status%></td>
+        <td></td>
+      </tr>
+      <%});}%>
+    </tbody>
+  </table>
+
+</div>
 <%- include('footer'); -%> 

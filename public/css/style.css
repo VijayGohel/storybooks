@@ -4,3 +4,13 @@
     margin-top: 50px;
     text-align: center;
 }
+
+.fab
+{
+    border-radius: 50%;
+    box-shadow: 0 0 3px 0 black;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    line-height: 1.5 !important;
+}
