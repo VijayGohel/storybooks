@@ -1,22 +1,40 @@
 <%- include('../header'); -%>
 
 <div class="container">
+    <form action="/stories" method="post" class="col s12">
+
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title">
+        <input type="text" class="form-control" id="title" name="title">
     </div>
 
     <div class="mb-3">
-        <label for="title" class="form-label">Status</label>
-        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select form-select-sm" name="status" id="status" aria-label=".form-select-sm example">
             <option selected value="public">public</option>
             <option value="private">private</option>
         </select>
     </div>
 
     <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Tell us your story</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="story" class="form-label">Tell us your story</label>
+        <textarea class="form-control" id="body" name="body" rows="3"></textarea>
     </div>
+
+    
+    <button class="btn btn-primary  me-3" type="submit">Save</button>
+    <a href="/dashboard" class="btn  btn-warning">Cancel</a>
+ 
+    </form>
 </div>
-  <%- include('../footer'); -%> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
+        integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" crossorigin="anonymous"></script>
+
+    <script>
+        CKEDITOR.replace('body', {
+            plugins: 'wysiwygarea, toolbar, basicstyles, link'
+        })
+    </script>
+
+<%- include('../footer'); -%> 
