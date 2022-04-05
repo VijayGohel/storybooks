@@ -2,26 +2,29 @@
 
 <div class="container">
 
-    <h3>Add Story</h3>
+    <h3>Edit Story</h3>
     
-    <form action="/stories" method="post" class="col s12">
+    <form action="/stories/<%=story._id%>" method="POST" enctype="application/x-www-form-urlencoded" class="col s12">
+    
+    <input type="hidden" name="_method" value="PUT">
 
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title" value="<%=story.title%>">
     </div>
 
     <div class="mb-3">
         <label for="status" class="form-label">Status</label>
         <select class="form-select form-select-sm" name="status" id="status" aria-label=".form-select-sm example">
-            <option selected value="public">public</option>
-            <option value="private">private</option>
+            <option <% if(story.status === 'public'){%> selected<%}%> value="public">public</option>
+            <option <% if(story.status === 'private'){%> selected<%}%> value="private">private</option>
         </select>
+
     </div>
 
     <div class="mb-3">
         <label for="story" class="form-label">Tell us your story</label>
-        <textarea class="form-control" id="body" name="body" rows="3"></textarea>
+        <textarea class="form-control" id="body" name="body" rows="3"><%=story.body%></textarea>
     </div>
 
     

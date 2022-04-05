@@ -35,7 +35,7 @@ router
                 .populate('user')
                 .sort({ createdAt: 'desc' })
                 .lean();
-            
+
             res.render("stories/index", {stories,user:req.user, stripTags, truncate , editIcon});
                 
         } catch (err) {
@@ -44,4 +44,54 @@ router
         }
         
     });
+
+router.
+    get("/edit/:id",ensureAuth, async (req,res)=>{
+        try {
+            const story = await Story.findById(req.params.id).lean();
+            
+            
+            if(!story)
+            {
+                res.render("Errors/404");
+            }
+            else if(story.user.toString() !== req.user._id.toString())
+            {
+                res.redirect("/");
+            }
+            else
+            {
+                res.render("stories/edit",{story});
+            }
+        } catch (err) {
+            res.render("Errors/500");
+            console.error(err);
+            
+        }
+    });
+
+router
+    .put("/:id",ensureAuth, async (req,res)=>{
+        try {
+            
+            let story = await Story.findById(req.params.id).lean();
+
+            if (!story) {
+                res.render("Errors/404");
+            } else if(req.user._id.toString() !== story.user.toString()){
+                res.redirect("/");
+            }
+            else{
+                story = await Story.findOneAndUpdate( {_id: req.params.id }, req.body, {
+                    new:true,
+                    runValidators:true
+                })
+ 
+                res.redirect("/dashboard");
+            }
+        } catch (err) {
+            res.render("Errors/500")
+            console.log(err);
+        }
+    })
 module.exports = router;
