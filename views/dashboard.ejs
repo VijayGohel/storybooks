@@ -27,7 +27,18 @@
         <th scope="row"><%=story.title%></th>
         <td><%= formateDate(story.createdAt, 'MMMM Do, YYYY h:mm a') %></td>
         <td><%=story.status%></td>
-        <td></td>
+        <td>
+          <a href="/stories/edit/<%=story._id%>" class="btn btn-icon bg-primary text-white ">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </a>
+
+          <form action="/stories/<%=story._id%>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-icon bg-danger text-white ">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </form>
+        </td>
       </tr>
       <%});%>
     </tbody>

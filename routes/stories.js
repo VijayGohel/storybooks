@@ -94,4 +94,26 @@ router
             console.log(err);
         }
     })
+
+router. 
+    delete("/:id", ensureAuth , async (req,res)=>{
+        try {
+            
+            let story = await Story.findById(req.params.id).lean();
+
+            if (!story) {
+                res.render("Errors/404");
+            } else if(req.user._id.toString() !== story.user.toString()){
+                res.redirect("/");
+            }
+            else{
+                story = await Story.deleteOne( {_id: req.params.id });
+ 
+                res.redirect("/dashboard");
+            }
+        } catch (err) {
+            res.render("Errors/500");
+            console.error(err);
+        }
+    })
 module.exports = router;

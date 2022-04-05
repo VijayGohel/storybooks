@@ -21,9 +21,9 @@ module.exports= {
       editIcon: function (storyUserId, loggedUserId, storyId, floating = true) {
         if (storyUserId.toString() == loggedUserId.toString()) {
           if (floating) {
-            return `<a href="/stories/edit/${storyId}" class="btn-floating btn-icon bg-primary text-white "><i class="fa-solid fa-pen-to-square"></i></a>`
+            return `<a href="/stories/edit/${storyId}" class="btn btn-floating btn-icon bg-primary text-white "><i class="fa-solid fa-pen-to-square"></i></a>`
           } else {
-            return `<a href="/stories/edit/${storyId}" class="btn-icon bg-primary text-white"><i class="fa-solid fa-pen-to-square"></i></a>`
+            return `<a href="/stories/edit/${storyId}" class="btn btn-icon bg-primary text-white"><i class="fa-solid fa-pen-to-square"></i></a>`
           }
         } else {
           return ''
