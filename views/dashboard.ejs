@@ -25,7 +25,7 @@
       <% stories.forEach((story)=>{%>
       <tr>
         <th scope="row"><%=story.title%></th>
-        <td><%=story.createdAt%></td>
+        <td><%= formateDate(story.createdAt, 'MMMM Do, YYYY h:mm a') %></td>
         <td><%=story.status%></td>
         <td></td>
       </tr>
