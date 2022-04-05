@@ -1,0 +1,31 @@
+<%- include('../header'); -%>
+
+<div class="container">
+
+    <h1>Stories</h1>
+
+    <div class="row">
+        <%stories.forEach((story)=>{%>
+            <div class="col-lg-4 col-md-6 col-sm-12 g-3 text-center">
+                <div class="card">
+                    
+                    <div class="card-img-top"><%- editIcon(story.user._id, user._id , story._id)%> </div>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title"><%=story.title%></h5>
+                        <p class="card-text text-start"><%=truncate(stripTags(story.body),150)%></p>
+                        <p class="card-text">
+                            <a href="stories/user/<%=story.user.googleId%>">
+                            <span class="badge rounded-pill chip">
+                                <img src="<%=story.user.image%>" alt="User Image" referrerpolicy="no-referrer"> <%=story.user.displayName%></span>
+                            </a>
+                        </p>
+                        <a href="#" class="btn btn-secondary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        <%})%>
+    </div>
+</div>
+
+<%- include('../footer'); -%>

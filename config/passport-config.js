@@ -28,7 +28,6 @@ module.exports = function(passport){ passport.use(new GoogleStrategy({
             console.error(err);
         }
 
-        console.log(profile);
     }
     )
     ),

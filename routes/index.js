@@ -17,9 +17,10 @@ router
 
         try {
 
-            const stories = await Story.find({user: req.user.id}).lean()    ;
+            const stories = await Story.find({user: req.user.id}).lean();
+            
             res.render("dashboard", 
-                {userName: req.user.firstName, stories , formateDate: formateDate});
+                {userName: req.user.firstName, stories , formateDate});
 
         } catch (err) {
             res.render("/Errors/500");

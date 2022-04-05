@@ -14,3 +14,31 @@
     right: 25px;
     line-height: 1.5 !important;
 }
+
+.chip 
+{
+    font-size: 1rem;
+    overflow: hidden;
+    background-color: #EFEFEF;
+    color: #181819;
+}
+
+.chip img
+{
+    border-radius: 50%;
+    width: 2rem;
+}
+
+.btn-icon
+{
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.btn-floating
+{
+    position: absolute;
+    right: 8px;
+    top: -20px;
+}
