@@ -1,0 +1,31 @@
+<%- include('../header'); -%>
+
+<div class="container">
+<div class="row mx-auto">
+    <div class="col-lg-8 col-md-8 col-sm-12 my-3 mx-auto">
+        <h3 ><%=story.title%></h3>
+
+        <div class="card">
+            <div class="card-body"  style="position: relative">
+                <%- editIcon(story.user._id, user._id, story._id)%>
+                <h5 class="card-title"><%=formateDate(story.createdAt, 'MMMM Do, YYYY h:mm a') %></h5>
+                <p class="card-text"><%=stripTags(story.body)%></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 my-3 mx-auto">
+        <div class="card text-center">
+            <div class="card-body">
+                <p class="card-title"><%=story.user.displayName%></p>
+                <img src="<%=story.user.image%>" class="user-img-big">
+
+                <div class="card-text">
+                    <a href="/stories/user/<%=story.user._id%>" class="btn btn-secondary">More From <%=story.user.firstName%></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<%- include('../footer'); -%> 

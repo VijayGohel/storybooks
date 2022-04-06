@@ -3,7 +3,7 @@ const router = express.Router();
 const {ensureAuth, ensureGuest} = require("../middleware/auth")
 const Story = require("../models/Story")
 
-const { formateDate } = require("../helpers/helper");
+const { formateDate, editIcon } = require("../helpers/helper");
 
 
 
@@ -20,7 +20,7 @@ router
             const stories = await Story.find({user: req.user.id}).lean();
             
             res.render("dashboard", 
-                {userName: req.user.firstName, stories , formateDate});
+                {user:req.user, stories , formateDate, editIcon});
 
         } catch (err) {
             res.render("/Errors/500");

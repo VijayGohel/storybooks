@@ -3,7 +3,7 @@ const router = express.Router();
 const {ensureAuth} = require("../middleware/auth")
 const Story = require("../models/Story")
 
-const {stripTags, truncate , editIcon} = require("../helpers/helper");
+const {stripTags, truncate , editIcon, formateDate} = require("../helpers/helper");
 
 router
     .get("/add",ensureAuth,(req,res)=>{
@@ -69,6 +69,28 @@ router.
             
         }
     });
+
+router
+    .get("/:id",ensureAuth, async (req,res)=>{
+        try {
+            const story = await Story.findById(req.params.id).populate('user').lean();
+
+            if(!story)
+                res.render("Errors/404");
+            
+            if(req.user._id.toString() !== story.user.toString() && story.status === 'private')
+            {
+                res.redirect("/");
+            }
+            else
+            {
+                res.render("stories/show", {story, user:req.user, stripTags, formateDate, editIcon});
+            }
+        } catch (err) {
+            res.render("Errors/404");
+            console.error(err);
+        }
+    })
 
 router
     .put("/:id",ensureAuth, async (req,res)=>{

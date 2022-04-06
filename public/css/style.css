@@ -44,3 +44,15 @@
     right: 8px;
     top: -20px;
 }
+
+.user-img-big
+{
+    width: 100px;
+    border-radius: 50%;
+    margin: 7px auto 15px;
+}
+
+.dashboard-story-title
+{
+    color: black;
+}
