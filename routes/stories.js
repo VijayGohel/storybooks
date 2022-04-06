@@ -138,4 +138,21 @@ router.
             console.error(err);
         }
     })
+
+router 
+    .get("/user/:id", ensureAuth , async (req,res)=>{
+        try {
+            const stories = await Story.find({user : req.params.id , status: 'public'})
+                                    .populate('user').lean();
+            
+            if(!stories)
+                res.render("stories/nostory");
+            
+                res.render("stories/index", {stories,user:req.user, stripTags, truncate , editIcon});
+
+        } catch (err) {
+            res.render("Errors/500");
+            console.error(err);
+        }
+    })
 module.exports = router;

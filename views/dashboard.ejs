@@ -11,7 +11,7 @@
 <p>Here are your stories</p>
 
 
-<table class="table table-hover">
+<table class="table table-hover text-center">
     <thead>
       <tr>
         <th scope="col">Title</th>
@@ -27,15 +27,17 @@
         <th scope="row"><a href="/stories/<%=story._id%>" class="dashboard-story-title"> <%=story.title%> </a></th>
         <td><%= formateDate(story.createdAt, 'MMMM Do, YYYY h:mm a') %></td>
         <td><%=story.status%></td>
-        <td>
-          <%- editIcon(story.user._id, user._id, story._id, false) %>
-
-          <form action="/stories/<%=story._id%>" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-icon bg-danger text-white ">
-              <i class="fa-solid fa-trash"></i>
-            </button>
-          </form>
+        <td >
+          
+            <%- editIcon(story.user._id, user._id, story._id, false) %>
+         
+            <form action="/stories/<%=story._id%>" method="POST" class="trash-form my-1 my-sm-0">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-icon bg-danger text-white ">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
+          
         </td>
       </tr>
       <%});%>
