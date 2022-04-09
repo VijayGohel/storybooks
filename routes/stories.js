@@ -78,7 +78,7 @@ router
             if(!story)
                 res.render("Errors/404");
             
-            if(req.user._id.toString() !== story.user.toString() && story.status === 'private')
+            if(req.user._id.toString() !== story.user._id.toString() && story.status === 'private')
             {
                 res.redirect("/");
             }
