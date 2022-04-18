@@ -18,7 +18,7 @@
                         <h5 class="card-title"><%=story.title%></h5>
                         <p class="card-text text-start"><%=truncate(stripTags(story.body),150)%></p>
                         <p class="card-text">
-                            <a href="stories/user/<%=story.user._id%>">
+                            <a href="/stories/user/<%=story.user._id%>">
                             <span class="badge rounded-pill chip">
                                 <img src="<%=story.user.image%>" alt="User Image" referrerpolicy="no-referrer"> <%=story.user.displayName%></span>
                             </a>
